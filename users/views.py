@@ -5,11 +5,14 @@ from users.models import User, Profile
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
+from products.models import Products
 
 
 # Create your views here.
 def index(request):
-    return render(request, "index.html")
+    all_products = Products.objects.all()
+    context = {"products": all_products}
+    return render(request, "index.html", context)
 
 
 def user_login(request):
