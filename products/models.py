@@ -8,10 +8,11 @@ class Category(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
     def __str__(self):
         return self.name
+    
 class Products(models.Model):
     category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name="products")
     title = models.CharField(max_length=100)
-    price = models.FloatField()
+    price = models.IntegerField()
     quantity = models.IntegerField()
     specification = models.TextField(null=True, blank=True)
     image = models.CharField(max_length=100)
@@ -19,6 +20,7 @@ class Products(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
     def __str__(self):
         return self.title
+    
 class Carts(models.Model):
     product = models.ForeignKey(Products, on_delete=models.CASCADE, related_name="carts")
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="carts")

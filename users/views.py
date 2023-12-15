@@ -28,6 +28,7 @@ def user_login(request):
         username = check_user[0].username
         valid_user = authenticate(username=username, password=password)
         if valid_user:
+            messages.info(request, "you are login in")
             login(request, valid_user)
             return redirect("profile")
         else:
