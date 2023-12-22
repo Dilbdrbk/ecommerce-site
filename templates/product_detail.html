@@ -1,7 +1,6 @@
 {% extends "base.html"%}
 {% block content%}
 
-  
   <!-- content -->
   <section class="py-5">
     <div class="container">
@@ -60,7 +59,8 @@
               </div>
             </div>
           
-            <a href="{% url 'add_to_cart' product_id= product.pk %}" class="btn btn-primary shadow-0"> <i class="me-1 fa fa-shopping-basket"></i> Add to cart </a>
+            <a href="{% url 'add_to_cart' product_id=product.pk %}" class="btn btn-primary shadow-0"> <i class="me-1 fa fa-shopping-basket"></i> Add to cart </a>
+            
            
           </div>
         </main>
@@ -223,3 +223,4 @@
   <!-- Footer -->
   
   {%endblock%}
+

@@ -1,7 +1,7 @@
 from django.shortcuts import render,redirect
 from products.models import Products, Carts
 from django.contrib.auth.decorators import login_required
-
+from datetime import datetime
 
 
 
@@ -41,10 +41,12 @@ def add_to_cart(request, product_id):
         if has_quantity_from_post:
             cart_item.cart_quantity = cart_data["cart_quantity"]
             cart_item.cart_total = int(cart_data["cart_quantity"]) * product.price
+            cart_item.update_at = datetime.now()
             cart_item.save()
         else:
             cart_item.cart_quantity += 1
             cart_item.cart_total = int(cart_item.cart_quantity) * product.price
+            cart_item.update_at = datetime.now()
             cart_item.save()
     else:
         Carts.objects.create(**cart_data)
