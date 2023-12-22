@@ -4,12 +4,13 @@
 <section class="gradient-custom">
   <div class="container py-5">
     <div class="row d-flex justify-content-center align-items-center h-100">
-        {% for each_order in orders %}
       <div class="col-lg-10 col-xl-8">
-        <div class="card" style="border-radius: 10px;">
-          <div class="card-header px-4 py-5">
+      <div class="card-header px-4 py-5">
             <h5 class="text-muted mb-0">Thanks for your Order, <span style="color: #a8729a;">{{ request.user.first_name }}</span>!</h5>
           </div>
+              {% for each_order in orders %}
+        <div class="card" style="border-radius: 10px;">
+
           <div class="card-body p-4">
             <div class="d-flex justify-content-between align-items-center mb-4">
               <p class="lead fw-normal mb-0" style="color: #a8729a;">Receipt</p>
@@ -66,8 +67,9 @@
             <h5 class="d-flex align-items-center justify-content-end text-white text-uppercase mb-0">Total
               paid: <span class="h2 mb-0 ms-2">Rs {{ each_order.order_total }}</span></h5>
           </div>
+                    {% endfor %}
+
         </div>
-            {% endfor %}
 
       </div>
     </div>
@@ -75,3 +77,4 @@
 </section>
 
 {% endblock %}
+```
